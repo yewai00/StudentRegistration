@@ -43,13 +43,4 @@ public class AuthController {
         return ResponseEntity.ok(authService.refreshToken(request));
     }
 
-    @GetMapping("/user")
-    public ResponseEntity<String> user() {
-        return ResponseEntity.ok("this is user");
-    }
-
-    @GetMapping("/admin")
-    public ResponseEntity<String> admin() {
-        return ResponseEntity.ok("this is admin");
-    }
 }
