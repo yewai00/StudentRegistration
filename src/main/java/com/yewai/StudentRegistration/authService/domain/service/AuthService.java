@@ -41,7 +41,6 @@ public class AuthService {
         return userMapper.toDTO(storedUser);
     }
 
-
     public AuthDTO login(AuthRequest authRequest) {
         try {
             authenticationManager.authenticate(
@@ -52,8 +51,6 @@ public class AuthService {
             );
         }catch (BadCredentialsException e) {
             throw e;
-        }catch (Exception e){
-            throw new RuntimeException();
         }
 
         var user = userRepository.findByName(authRequest.getName())

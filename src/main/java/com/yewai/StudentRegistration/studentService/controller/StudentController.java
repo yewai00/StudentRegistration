@@ -70,4 +70,10 @@ public class StudentController {
         return ResponseEntity.ok(students);
     }
 
+    @GetMapping("/oneCourse-free")
+    public ResponseEntity<List<StudentDTO>> getStudentsCanGetOneCourseFree() {
+        var students = this.studentService.getStudentsCanGetOneCourseFree();
+        return ResponseEntity.ok(students);
+    }
+
 }

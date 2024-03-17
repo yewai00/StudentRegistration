@@ -1,7 +1,9 @@
 package com.yewai.StudentRegistration.studentService.domain.model.request;
 
+import com.yewai.StudentRegistration.validation.ValidPhoneNumber;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
@@ -14,10 +16,11 @@ public class StudentRequest {
     @Size(max = 255)
     private String name;
 
+    @Past
     private LocalDate dob;
 
     @NotEmpty(message = "Phone is required field.")
-    @Size(max = 255)
+    @ValidPhoneNumber
     private String phone;
 
     @NotEmpty(message = "email is required field.")

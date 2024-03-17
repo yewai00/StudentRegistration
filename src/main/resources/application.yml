@@ -16,6 +16,10 @@ spring:
     enabled: true
     baseline-version: 0
 
+logging:
+  file:
+    name: ./log/studentRegistration.log
+    max-history: 10
 application:
   security:
     jwt:

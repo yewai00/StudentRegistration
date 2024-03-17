@@ -50,4 +50,13 @@ public class appExceptionHandler {
         );
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(errorResponse);
     }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(EmailDuplicateException.class)
+    public ResponseEntity<ErrorDTO> handleEmailDuplicateException(EmailDuplicateException ex) {
+        ErrorDTO errorResponse = new ErrorDTO(
+                "Unauthorized", ex.getMessage(), Map.of()
+        );
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
+    }
 }
