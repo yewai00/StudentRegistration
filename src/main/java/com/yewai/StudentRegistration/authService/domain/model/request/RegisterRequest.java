@@ -16,6 +16,6 @@ public class RegisterRequest {
     @NotEmpty(message = "Password is required field.")
     @Size(min = 8, max = 255)
     private String password;
-
+    
     private Role role;
 }
