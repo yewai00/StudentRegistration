@@ -9,6 +9,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v1/students")
 public class StudentController {
@@ -21,11 +23,16 @@ public class StudentController {
             @Valid @RequestBody StudentRequest studentRequest
             ) {
         var student = this.studentService.register(studentRequest);
-        return ResponseEntity.ok(student);
+        return ResponseEntity.created(null).body(student);
     }
 
-    public ResponseEntity<?> enroll() {
-        return null;
+    @PostMapping("/enroll")
+    public ResponseEntity<String> enroll(
+            @RequestParam Long studentId,
+            @RequestParam Long courseId
+    ) {
+        this.studentService.enroll(studentId, courseId);
+        return ResponseEntity.ok("Enrollment Successfully.") ;
     }
 
     @GetMapping("/{id}")
@@ -53,6 +60,14 @@ public class StudentController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> delete(@PathVariable Long id) {
-        return null;
+        this.studentService.delete(id);
+        return ResponseEntity.ok("Deleted Successfully.");
     }
+
+    @GetMapping("/discount-eligible")
+    public ResponseEntity<List<StudentDTO>> getDiscountAllowedStudentsList() {
+        var students = this.studentService.getDiscountAllowedStudents();
+        return ResponseEntity.ok(students);
+    }
+
 }
