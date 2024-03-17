@@ -46,7 +46,7 @@ public class SecurityConfig {
                         .requestMatchers("/api/v1/auth/refresh-token").hasAnyRole(Role.ADMIN.name(), Role.USER.name())
                         .requestMatchers(HttpMethod.GET, "/api/v1/auth/admin").hasRole(Role.ADMIN.name())
                         .requestMatchers(HttpMethod.GET, "/api/v1/auth/user").hasRole(Role.USER.name())
-                        .requestMatchers(HttpMethod.POST, "/api/v1/students/register").hasRole(Role.USER.name())
+                        .requestMatchers(HttpMethod.POST, "/api/v1/students/**").hasRole(Role.USER.name())
                         .anyRequest()
                         .authenticated()
                 )

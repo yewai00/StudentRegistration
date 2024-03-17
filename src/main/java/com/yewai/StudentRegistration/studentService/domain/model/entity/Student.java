@@ -37,7 +37,7 @@ public class Student {
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "student_course",
-            joinColumns = @JoinColumn(name = "employee_id", referencedColumnName = "id"),
+            joinColumns = @JoinColumn(name = "student_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "course_id", referencedColumnName = "id")
 
     )
